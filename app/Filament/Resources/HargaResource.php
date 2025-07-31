@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
 
 class HargaResource extends Resource
 {
@@ -55,6 +57,10 @@ class HargaResource extends Resource
                     ->money('IDR') // atau hilangkan jika hanya angka biasa
                     ->sortable(),
                 TextColumn::make('created_at')->dateTime(),
+            ])
+            ->actions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->filters([
                 //

@@ -25,6 +25,8 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Forms\Components\Repeater;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\BulkActionGroup;
 
 class OrderResource extends Resource
 {
@@ -148,6 +150,11 @@ class OrderResource extends Resource
                     ->visible(fn() => Auth::user()?->role === 'karyawan'),
 
                 DeleteAction::make(),
+            ])
+            ->bulkActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 

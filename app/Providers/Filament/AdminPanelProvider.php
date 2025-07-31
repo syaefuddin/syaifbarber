@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -28,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->brandName('Syaif Barber')
+            ->favicon(asset('logokuu.png'))
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -58,6 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->resources([
                 \App\Filament\Resources\OrderResource::class,
+                \App\Filament\Resources\UserResource::class,
             ]);
     }
 }

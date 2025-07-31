@@ -6,71 +6,40 @@
             <h1 class="mb-5">Karyawan</h1>
         </div>
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item text-center rounded overflow-hidden">
-                    <div class="rounded-circle overflow-hidden m-4">
-                        <img class="img-fluid" src="{{ asset('barberku/img/anwarr.jpg') }}" alt="">
-                    </div>
-                    <h5 class="mb-0">Anwar</h5>
-                    <small>Tukang Cukur</small>
-                    <div class="d-flex justify-content-center mt-3">
-                        <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+            @foreach ($karyawan as $user)
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <div class="rounded-circle overflow-hidden m-4"
+                            style="width: 200px; height: 200px; margin: auto;">
+                            <img class="img-fluid w-100 h-100 object-fit-cover"
+                                src="{{ asset('storage/' . $user->foto) }}" alt="{{ $user->name }}">
+                        </div>
+                        <h5 class="mb-0">{{ $user->name }}</h5>
+                        <small>{{ ucfirst($user->role) }}</small>
+                        <div class="d-flex justify-content-center mt-3">
+                            @if ($user->facebook)
+                                <a class="btn btn-square btn-primary mx-1" href="{{ $user->facebook }}" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            @endif
+
+                            @if ($user->instagram)
+                                <a class="btn btn-square btn-danger mx-1" href="{{ $user->instagram }}" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            @endif
+
+                            @if ($user->whatsapp)
+                                <a class="btn btn-square btn-success mx-1" href="https://wa.me/{{ $user->whatsapp }}"
+                                    target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            @endif
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="{{ asset('barberku/img/team-2.jpg') }}" alt="">
-                            </div>
-                            <h5 class="mb-0">Jarwo</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div> --}}
+            @endforeach
         </div>
     </div>
 </div>

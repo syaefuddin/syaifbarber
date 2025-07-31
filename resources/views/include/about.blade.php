@@ -9,14 +9,16 @@
                             src="{{ asset('barberku/img/dokumen.jpg') }}">
                     </div>
                     <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg"
-                            style="margin-top: 25%;">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
+                            src="{{ asset('about.jpg') }}" style="margin-top: 25%;">
                     </div>
                     <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
+                            src="{{ asset('about3.jpg') }}">
                     </div>
                     <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
+                            src="{{ asset('about2.jpg') }}">
                     </div>
                 </div>
             </div>

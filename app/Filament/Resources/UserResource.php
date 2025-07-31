@@ -17,6 +17,9 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\BulkActionGroup;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
+
 
 class UserResource extends Resource
 {
@@ -36,11 +39,43 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255),
-                TextInput::make('email')->email()->required()->maxLength(255),
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+
+                TextInput::make('email')
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
+
                 TextInput::make('password')
-                    ->password(),
-                Hidden::make('role')->default('karyawan'),
+                    ->password()
+                    ->maxLength(255),
+
+                Hidden::make('role')
+                    ->default('karyawan'),
+
+                FileUpload::make('foto')
+                    ->label('Foto Profil')
+                    ->image()
+                    ->directory('users')
+                    ->imageEditor()
+                    ->columnSpanFull(),
+
+                TextInput::make('facebook')
+                    ->label('Facebook URL')
+                    ->url()
+                    ->maxLength(255),
+
+                TextInput::make('whatsapp')
+                    ->label('WhatsApp')
+                    ->tel()
+                    ->maxLength(20),
+
+                TextInput::make('instagram')
+                    ->label('Instagram URL')
+                    ->url()
+                    ->maxLength(255),
             ]);
     }
 
@@ -48,9 +83,28 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->circular()
+                    ->size(40),
+
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('email'),
                 TextColumn::make('role'),
+
+                TextColumn::make('facebook')
+                    ->label('FB')
+                    ->limit(15)
+                    ->toggleable(),
+
+                TextColumn::make('whatsapp')
+                    ->label('WA')
+                    ->toggleable(),
+
+                TextColumn::make('instagram')
+                    ->label('IG')
+                    ->limit(15)
+                    ->toggleable(),
             ])
             ->actions([
                 EditAction::make(),
@@ -78,6 +132,9 @@ class UserResource extends Resource
     {
         return [
             'index' => Pages\ListUsers::route('/'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'create' => Pages\CreateUser::route('/create'),
+            // 'edit-profile' => Pages\EditProfile::route('/edit-profile'),
         ];
     }
 }

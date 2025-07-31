@@ -10,6 +10,12 @@ class EditSemir extends EditRecord
 {
     protected static string $resource = SemirResource::class;
 
+    // Redirect ke halaman index setelah berhasil create
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function getHeaderActions(): array
     {
         return [

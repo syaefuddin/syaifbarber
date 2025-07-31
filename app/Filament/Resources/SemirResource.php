@@ -17,6 +17,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Auth;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
 
 class SemirResource extends Resource
 {
@@ -57,9 +59,13 @@ class SemirResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_semir')->label('Nama Semir'),
-                TextColumn::make('deskripsi')->searchable()->sortable(),
+                TextColumn::make('deskripsi')->searchable()->limit(25)->sortable(),
                 ImageColumn::make('foto'),
                 TextColumn::make('created_at')->dateTime(),
+            ])
+            ->actions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->filters([
                 //

@@ -83,7 +83,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="tab-2" class="tab-pane fade show p-0">
+
+                {{-- <div id="tab-2" class="tab-pane fade show p-0">
                     <div class="max-w-7xl mx-auto py-10 px-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @forelse($semirs as $semir)
@@ -98,7 +99,56 @@
                             @endforelse
                         </div>
                     </div>
+                </div> --}}
+
+                <div id="tab-2" class="tab-pane fade show p-0">
+                    <div class="max-w-7xl mx-auto py-10 px-4">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                            @forelse($semirs as $semir)
+                                <div class="col">
+                                    <div class="card h-100 shadow-sm" data-bs-toggle="modal"
+                                        data-bs-target="#modalSemir{{ $semir->id }}">
+                                        <img src="{{ asset('storage/' . $semir->foto) }}" class="card-img-top"
+                                            alt="{{ $semir->nama_semir }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $semir->nama_semir }}</h5>
+                                            <p class="card-text text-truncate">{{ Str::limit($semir->deskripsi, 60) }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalSemir{{ $semir->id }}" tabindex="-1"
+                                    aria-labelledby="semirLabel{{ $semir->id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="semirLabel{{ $semir->id }}">
+                                                    {{ $semir->nama_semir }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Tutup"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="{{ asset('storage/' . $semir->foto) }}"
+                                                    class="img-fluid rounded mb-3" alt="{{ $semir->nama_semir }}">
+                                                <p>{{ $semir->deskripsi }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <p class="text-center text-muted">Belum ada semir tersedia.</p>
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
+
+
                 <div id="tab-3" class="tab-pane fade show p-0">
                     <div class="max-w-7xl mx-auto py-10 px-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

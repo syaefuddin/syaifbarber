@@ -17,6 +17,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
 
 class StyleRambutResource extends Resource
 {
@@ -57,9 +59,13 @@ class StyleRambutResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_style')->label('Nama Style'),
-                TextColumn::make('deskripsi')->searchable()->sortable(),
+                TextColumn::make('deskripsi')->searchable()->limit(25)->sortable(),
                 ImageColumn::make('foto'),
                 TextColumn::make('created_at')->dateTime(),
+            ])
+            ->actions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->filters([
                 //

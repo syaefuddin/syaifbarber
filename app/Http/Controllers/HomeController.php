@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StyleRambut;
 use App\Models\Semir;
+use App\Models\User;
+use App\Models\Harga;
 
 class HomeController extends Controller
 {
@@ -12,6 +14,8 @@ class HomeController extends Controller
     {
         $styles = StyleRambut::all();
         $semirs = Semir::all();
-        return view('pelanggan.home', compact('styles', 'semirs'));
+        $hargas = Harga::all();
+        $karyawan = User::where('role', 'karyawan')->get();
+        return view('pelanggan.beranda_menu', compact('styles', 'semirs', 'karyawan', 'hargas'));
     }
 }

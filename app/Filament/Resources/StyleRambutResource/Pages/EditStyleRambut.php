@@ -10,6 +10,12 @@ class EditStyleRambut extends EditRecord
 {
     protected static string $resource = StyleRambutResource::class;
 
+    // Redirect ke halaman index setelah berhasil create
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function getHeaderActions(): array
     {
         return [
