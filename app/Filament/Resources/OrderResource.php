@@ -32,6 +32,9 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
+
+    protected static ?string $navigationLabel = 'Pemasukan';
+    protected static ?string $pluralLabel = 'Pemasukan';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
     public static function form(Form $form): Form
@@ -123,6 +126,7 @@ class OrderResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('nama_pelanggan')
                     ->label('Pelanggan')
@@ -142,7 +146,7 @@ class OrderResource extends Resource
 
                 TextColumn::make('created_at')
                     ->dateTime()
-                    ->label('Tanggal'),
+                    ->label('Waktu'),
             ])
             ->actions([
                 EditAction::make()

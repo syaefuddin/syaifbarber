@@ -35,4 +35,12 @@ class CreateOrder extends CreateRecord
     {
         return static::getResource()::getUrl('index');
     }
+    protected function getCreateAnotherFormAction(): Actions\Action
+    {
+        return Actions\Action::make('createAnother')
+            ->label('Buat lainnya')
+            ->action('createAnother')
+            ->color('gray')
+            ->visible(false);
+    }
 }

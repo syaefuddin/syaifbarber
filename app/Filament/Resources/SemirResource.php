@@ -61,7 +61,7 @@ class SemirResource extends Resource
                 TextColumn::make('nama_semir')->label('Nama Semir'),
                 TextColumn::make('deskripsi')->searchable()->limit(25)->sortable(),
                 ImageColumn::make('foto'),
-                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('created_at')->dateTime()->label('Waktu'),
             ])
             ->actions([
                 EditAction::make(),

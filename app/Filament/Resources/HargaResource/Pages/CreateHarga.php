@@ -15,4 +15,23 @@ class CreateHarga extends CreateRecord
     {
         return $this->getResource()::getUrl('index');
     }
+
+    public function getHeading(): string
+    {
+        return 'Tambah Harga Pelayanan';
+    }
+
+    public function getBreadcrumb(): string
+    {
+        return 'Tambah';
+    }
+
+    protected function getCreateAnotherFormAction(): Actions\Action
+    {
+        return Actions\Action::make('createAnother')
+            ->label('Buat lainnya')
+            ->action('createAnother')
+            ->color('gray')
+            ->visible(false);
+    }
 }

@@ -16,4 +16,8 @@ class EditAdmin extends EditRecord
             // Actions\DeleteAction::make(),
         ];
     }
+    public function getHeading(): string
+    {
+        return 'Ubah Data Admin';
+    }
 }

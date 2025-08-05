@@ -26,6 +26,8 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationLabel = 'Data Karyawan';
+    protected static ?string $pluralLabel = 'Karyawan';
 
     public static function canAccess(): bool
     {
@@ -40,6 +42,7 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label('Nama')
                     ->required()
                     ->maxLength(255),
 
@@ -68,7 +71,7 @@ class UserResource extends Resource
                     ->maxLength(255),
 
                 TextInput::make('whatsapp')
-                    ->label('WhatsApp')
+                    ->label('Nomor WhatsApp')
                     ->tel()
                     ->maxLength(20),
 
@@ -88,7 +91,7 @@ class UserResource extends Resource
                     ->circular()
                     ->size(40),
 
-                TextColumn::make('name')->searchable(),
+                TextColumn::make('name')->searchable()->label('Nama'),
                 TextColumn::make('email'),
                 TextColumn::make('role'),
 

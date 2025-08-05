@@ -25,8 +25,8 @@ class StyleRambutResource extends Resource
     protected static ?string $model = StyleRambut::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-scissors';
-    protected static ?string $navigationLabel = 'Style Rambut';
-    protected static ?string $pluralLabel = 'Style Rambut';
+    protected static ?string $navigationLabel = 'Model Rambut';
+    protected static ?string $pluralLabel = 'Model Rambut';
 
     public static function canAccess(): bool
     {
@@ -41,7 +41,7 @@ class StyleRambutResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nama_style')
-                    ->label('Nama Style Rambut')
+                    ->label('Nama Model Rambut')
                     ->required()
                     ->maxLength(255),
                 TextInput::make('deskripsi')
@@ -58,10 +58,10 @@ class StyleRambutResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_style')->label('Nama Style'),
+                TextColumn::make('nama_style')->label('Nama Model'),
                 TextColumn::make('deskripsi')->searchable()->limit(25)->sortable(),
                 ImageColumn::make('foto'),
-                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('created_at')->dateTime()->label('Waktu'),
             ])
             ->actions([
                 EditAction::make(),

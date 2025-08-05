@@ -16,7 +16,16 @@ class ListOrders extends ListRecords
     {
         return [
             Actions\CreateAction::make()
+                ->label('Tambah')
                 ->visible(fn() => Auth::user()?->role === 'karyawan'),
         ];
+    }
+    public function getHeading(): string
+    {
+        return 'Daftar Pemasukan';
+    }
+    public function getBreadcrumb(): string
+    {
+        return 'Daftar';
     }
 }

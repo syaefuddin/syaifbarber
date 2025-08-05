@@ -56,7 +56,7 @@ class HargaResource extends Resource
                 TextColumn::make('harga')
                     ->money('IDR') // atau hilangkan jika hanya angka biasa
                     ->sortable(),
-                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('created_at')->dateTime()->label('Waktu'),
             ])
             ->actions([
                 EditAction::make(),
